@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 80% 98%;
+    --foreground: 215 80% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 80% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 80% 9%;
+
+    --primary: 215 80% 9%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 30% 95%;
+    --secondary-foreground: 215 80% 9%;
+
+    --muted: 210 30% 96%;
+    --muted-foreground: 215 30% 45%;
+
+    --accent: 190 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    --navy: 215 80% 9%;
+    --navy-light: 215 60% 18%;
+    --navy-deep: 215 85% 6%;
+    --cyan: 190 100% 50%;
+    --cyan-light: 190 100% 65%;
+    --cyan-glow: 190 100% 75%;
+    --electric: 200 100% 60%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(215 80% 9%) 0%, hsl(215 70% 14%) 50%, hsl(220 75% 10%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(215 80% 9%) 0%, hsl(215 85% 6%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(190 100% 50%) 0%, hsl(200 100% 60%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(190 100% 55%) 0%, hsl(210 100% 70%) 50%, hsl(190 100% 50%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(215 80% 9% / 0.8) 0%, hsl(215 70% 14% / 0.6) 100%);
+  }
+
+  .dark {
+    --background: 215 80% 9%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 70% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 70% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 190 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 60% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 50% 20%;
+    --muted-foreground: 210 30% 70%;
+
+    --accent: 190 100% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 50% 20%;
+    --input: 215 50% 20%;
+    --ring: 190 100% 50%;
+  }
+
+  * {
+    /* @apply border border-[hsl(var(--border))]; */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-outfit antialiased;
+  }
+}
+
+@layer components {
+  .gradient-hero { background: var(--gradient-hero); }
+  .gradient-dark { background: var(--gradient-dark); }
+  .gradient-accent { background: var(--gradient-accent); }
+
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .text-gradient-static {
+    @apply bg-clip-text text-transparent;
+    background: var(--gradient-accent);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 40px hsl(var(--cyan) / 0.4),
+                0 0 80px hsl(var(--cyan) / 0.2);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 40px hsl(var(--cyan) / 0.6),
+                 0 0 80px hsl(var(--cyan) / 0.3);
+  }
+
+  .glass-card {
+    background: hsl(var(--navy) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--cyan) / 0.15);
+  }
+
+  .glass-card-light {
+    background: hsl(0 0% 100% / 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--cyan) / 0.1);
+  }
+
+  .parallax-layer {
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+
+  .letter-spacing-animate {
+    animation: letter-space 2s ease-out forwards;
+  }
+
+  .perspective-1000 { perspective: 1000px; }
+  .transform-3d { transform-style: preserve-3d; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes letter-space {
+  0% { letter-spacing: -0.05em; opacity: 0; }
+  50% { letter-spacing: 0.15em; opacity: 0.7; }
+  100% { letter-spacing: 0.02em; opacity: 1; }
+}
