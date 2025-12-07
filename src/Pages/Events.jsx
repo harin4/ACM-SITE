@@ -785,18 +785,6 @@ const EVENTS = [
 
 const Events = () => {
   const [activeTab, setActiveTab] = useState('past');
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [showHighlights, setShowHighlights] = useState(false);
-
-  const handleViewHighlights = (event) => {
-    setSelectedEvent(event);
-    setShowHighlights(true);
-  };
-
-  const closeHighlights = () => {
-    setShowHighlights(false);
-    setSelectedEvent(null);
-  };
 
   const EventCard = ({ event }) => (
     <div className="glass-card rounded-xl overflow-hidden hover:glow-cyan transition-all duration-300">
@@ -836,7 +824,7 @@ const Events = () => {
         )}
 
         {/* Event Details - Only show non-empty fields */}
-        <div className="space-y-2 mb-4">
+        <div className="space-y-2">
           {event.displayDate && (
             <div className="flex items-center text-sm text-muted-foreground">
               <CalendarIcon className="h-4 w-4 mr-2 text-accent" />
@@ -862,109 +850,8 @@ const Events = () => {
             </div>
           )}
         </div>
-
-        {/* Action Button */}
-        <button 
-          onClick={() => {
-            if (activeTab === 'past') {
-              handleViewHighlights(event);
-            } else {
-              alert('Registration feature coming soon!');
-            }
-          }}
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg font-medium transition-colors"
-        >
-          {activeTab === 'upcoming' ? 'Register Now' : 'View Highlights'}
-        </button>
       </div>
     </div>
-  );
-
-  const HighlightsModal = () => (
-    showHighlights && selectedEvent && (
-      <div className="fixed inset-0 bg-background/90 backdrop-blur-sm flex items-center justify-center p-4 z-50" style={{ backgroundColor: 'rgba(3, 15, 39, 0.95)' }}>
-        <div className="glass-card rounded-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">
-              Event Highlights
-            </h2>
-            <button 
-              onClick={closeHighlights}
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <XMarkIcon className="h-6 w-6" />
-            </button>
-          </div>
-
-          {/* Event Image */}
-          <div className="mb-6">
-            <img 
-              src={selectedEvent.imageUrl} 
-              alt={selectedEvent.title}
-              className="w-full h-64 object-cover rounded-lg"
-            />
-          </div>
-
-          {/* Event Title */}
-          <h3 className="text-xl font-bold text-white mb-4">
-            {selectedEvent.title}
-          </h3>
-
-          {/* Full Description */}
-          {selectedEvent.description && (
-            <div className="mb-6">
-              <h4 className="text-lg font-semibold text-white mb-2">Description</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                {selectedEvent.description}
-              </p>
-            </div>
-          )}
-
-          {/* Event Details */}
-          <div className="space-y-3">
-            <h4 className="text-lg font-semibold text-white mb-3">Event Details</h4>
-            
-            {selectedEvent.displayDate && (
-              <div className="flex items-center text-muted-foreground">
-                <CalendarIcon className="h-5 w-5 mr-3 text-accent" />
-                <span>{selectedEvent.displayDate}</span>
-              </div>
-            )}
-            
-            {selectedEvent.time && (
-              <div className="flex items-center text-muted-foreground">
-                <ClockIcon className="h-5 w-5 mr-3 text-accent" />
-                <span>{selectedEvent.time}</span>
-              </div>
-            )}
-            
-            {selectedEvent.location && (
-              <div className="flex items-center text-muted-foreground">
-                <MapPinIcon className="h-5 w-5 mr-3 text-accent" />
-                <span>{selectedEvent.location}</span>
-              </div>
-            )}
-            
-            {selectedEvent.attendees > 0 && (
-              <div className="flex items-center text-muted-foreground">
-                <UsersIcon className="h-5 w-5 mr-3 text-accent" />
-                <span>{selectedEvent.attendees} attendees</span>
-              </div>
-            )}
-          </div>
-
-          {/* Close Button */}
-          <div className="mt-8 flex justify-end">
-            <button
-              onClick={closeHighlights}
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-lg font-medium transition-colors"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    )
   );
 
   const pastEvents = EVENTS.filter(event => event.status === 'Completed');
@@ -1059,9 +946,6 @@ const Events = () => {
           )}
         </div>
       </div>
-
-      {/* Highlights Modal */}
-      <HighlightsModal />
     </div>
   );
 };
