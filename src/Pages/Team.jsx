@@ -9,7 +9,7 @@ const Team = () => {
   const [activeRole, setActiveRole] = useState("all");
 
   const roles = [
-    { id: "all", label: "All Members", icon: Users },
+    { id: "all", label: "SIGAI Team", icon: Users },
     { id: "faculty", label: "Faculty", icon: BookOpen },
     { id: "executive", label: "Office Bearers", icon: Briefcase },
     { id: "core", label: "Core Team", icon: Award },
@@ -103,8 +103,8 @@ const Team = () => {
       name: "Vidhi",
       role: "core",
       position: "Social Media Lead",
-      image: null, // Placeholder image - will use fallback
-      linkedin: null,
+      image: "/vidhi.jpg", // Placeholder image - will use fallback
+      linkedin: "vidhi-jain005",
       bio: "Managing social media presence and communications for ACM SIGAI",
     },
     {
@@ -121,8 +121,8 @@ const Team = () => {
       name: "Naveen",
       role: "core",
       position: "Creatives Lead",
-      image: null, // Placeholder image - will use fallback
-      linkedin: null,
+      image: "/naveen.jpg", // Placeholder image - will use fallback
+      linkedin: "navn2",
       bio: "Leading creative design and visual content for ACM SIGAI",
     },
     {
@@ -374,20 +374,7 @@ const Team = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-24 lg:py-32 gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-[600px] h-[600px] bg-cyan/10 rounded-full blur-[150px] animate-pulse-glow" />
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-8">
-            Join Our <span className="text-gradient">Team</span>
-          </h2>
-          <p className="text-primary-foreground/50 text-lg sm:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-            Be part of a community that's shaping the future of AI. Join ACM SIGAI SRMIST and collaborate with passionate individuals.
-          </p>
-    </div>
-      </section>
+      
     </PageWrapper>
   );
 };
