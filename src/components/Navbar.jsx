@@ -35,7 +35,7 @@ export default function Navbar({ onMenuClick }) {
           <Link to="/team" className="hover:text-cyan transition-colors">Team</Link>
           <Link to="/gallery" className="hover:text-cyan transition-colors">Gallery</Link>
           <Link to="/joinus" className="hover:text-cyan transition-colors">Join Us</Link>
-          <Link to="/contact" className="hover:text-cyan transition-colors">Contact</Link>
+          <Link to="/contact" className="hover:text-cyan transition-colors">Contact Us</Link>
         </div>
       </div>
     </nav>
