@@ -16,7 +16,7 @@ export default function App() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar onMenuClick={() => setOpen(true)} />
       <Sidebar open={open} onClose={() => setOpen(false)} />
       <Routes>
