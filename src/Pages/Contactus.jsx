@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Instagram, Linkedin, Globe, Github } from "lucide-react";
+import { Phone, MapPin, Instagram } from "lucide-react";
 
 import PageWrapper from "../components/PageWrapper";
 import ScrollButtons from "../components/ScrollButtons";
+import ParallaxHero from "../components/ParallaxHero";
+import { Users, Award, Briefcase, GraduationCap, BookOpen, Linkedin, Mail, Github, Globe } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 
 export default function Contactus() {
   const [formData, setFormData] = useState({
@@ -42,18 +46,41 @@ export default function Contactus() {
   return (
     <PageWrapper>
       <ScrollButtons />
+      <ParallaxHero>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
+          <div className="text-center">
+            <div className="mb-10">
+              <div className="inline-flex items-center gap-4 px-6 py-3 rounded-2xl glass-card animate-glow-pulse">
+                <Users className="w-5 h-5 text-cyan" />
+                <span className="text-cyan/80 text-sm font-medium tracking-wider uppercase">
+                  Reach Us
+                </span>
+              </div>
+            </div>
 
-      {/* HERO HEADER */}
-      <section className="py-32 gradient-hero relative overflow-hidden text-center">
-        <div className="relative max-w-4xl mx-auto px-6">
-          <h1 className="text-7xl font-black text-gradient mb-6 tracking-tight">
-            Contact Us
-          </h1>
-          <p className="text-white/70 text-xl max-w-2xl mx-auto">
-            Get in touch with ACM SIGAI SRM — we’re always excited to connect!
-          </p>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
+              <span className="text-gradient letter-spacing-animate inline-block">
+                Contact us
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl md:text-2xl text-cyan/70 font-light tracking-widest uppercase max-w-3xl mx-auto">
+              Get in Touch with ACM SIGAI
+            </p>
+
+            <div className="flex items-center justify-center gap-4 mt-16">
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan/50 to-transparent" />
+              <div className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-cyan to-transparent" />
+              <div
+                className="w-2 h-2 rounded-full bg-cyan animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              />
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan/50 to-transparent" />
+            </div>
+          </div>
         </div>
-      </section>
+      </ParallaxHero>
 
       {/* CONTACT SECTION */}
       <section className="py-24 gradient-dark relative">
@@ -137,27 +164,33 @@ export default function Contactus() {
       </section>
 
       {/* SOCIAL MEDIA */}
-<section className="py-24 text-center gradient-hero border-t border-white/10">
-  <h2 className="text-4xl font-bold text-gradient mb-10">Connect With Us</h2>
-  <div className="flex justify-center gap-10">
-    {[
-      { Icon: Globe, link: "https://sigai.acm.org/main/" },
-      { Icon: Github, link: "https://github.com/SRM-ACM-SIGAI" },
-      { Icon: Instagram, link: "https://www.instagram.com/srmsigai/?__d=11" },
-      { Icon: Linkedin, link: "https://www.linkedin.com/company/srmist-ktr-acm-sigai/" }
-    ].map(({ Icon, link }, index) => (
-      <a
-        key={index}
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-20 h-20 flex items-center justify-center rounded-2xl border border-white/20 transition-all hover:border-cyan/80"
-      >
-        <Icon className="w-10 h-10 text-white hover:text-cyan transition-all" />
-      </a>
-    ))}
-  </div>
-</section>
+      <section className="py-24 text-center gradient-hero border-t border-white/10">
+        <h2 className="text-4xl font-bold text-gradient mb-10">Connect With Us</h2>
+        <div className="flex justify-center gap-10">
+          {[
+            { Icon: Globe, link: "https://sigai.acm.org/main/" },
+            { Icon: Github, link: "https://github.com/SRM-ACM-SIGAI" },
+            { Icon: Instagram, link: "https://www.instagram.com/srmsigai/?__d=11" },
+            { Icon: Linkedin, link: "https://www.linkedin.com/company/srmist-ktr-acm-sigai/" }
+          ].map(({ Icon, link }, index) => (
+            <a
+              key={index}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-20 h-20 flex items-center justify-center rounded-2xl border border-white/20 transition-all hover:border-cyan/80"
+            >
+              <Icon className="w-10 h-10 text-white hover:text-cyan transition-all" />
+            </a>
+          ))}
+        </div>
+        
+      </section>
+
+      
+
+     
+
 
       {/* MAP */}
       <section className="py-24 gradient-dark text-center border-t border-white/10">

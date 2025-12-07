@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import PageWrapper from './components/PageWrapper'
-import Sidebar from "./components/Sidebar";
 import Home from './Pages/Home'
 import About from './Pages/About'
 import Events from './Pages/Events'
@@ -18,7 +17,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar onMenuClick={() => setOpen(true)} />
-      <Sidebar open={open} onClose={() => setOpen(false)} />
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

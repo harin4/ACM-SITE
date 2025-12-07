@@ -6,6 +6,7 @@ const PlaceholderLogo = ({ name, size = "md", className = "" }) => {
   };
 
   const getInitials = (text) => {
+
     return text
       .split(" ")
       .map((word) => word[0])

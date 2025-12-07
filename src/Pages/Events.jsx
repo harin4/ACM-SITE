@@ -72,6 +72,11 @@ import noCodeSeminarImg from '../assets/no-code-no-problem.jpg';
 import aiEthicsImg from '../assets/AI-with-integrity.jpg';
 import placementTalkImg from '../assets/placement-talk.jpg';
 import chapterInaugurationImg from '../assets/acm_sigai_inauguration.jpg';
+import PageWrapper from '../components/PageWrapper';
+import ScrollButtons from '../components/ScrollButtons';
+import ParallaxHero from "../components/ParallaxHero";
+import { Users, Award, Briefcase, GraduationCap, BookOpen, Linkedin, Mail, Github, Globe } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 // Static events data
 const EVENTS = [
@@ -858,95 +863,125 @@ const Events = () => {
   const upcomingEvents = EVENTS.filter(event => event.status !== 'Completed');
 
   return (
-    <div className="min-h-screen bg-background" style={{ backgroundColor: 'hsl(215, 80%, 9%)' }}>
-      {/* Header */}
-      <div className="gradient-hero py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4">
-              Events
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover our workshops, bootcamps, and conferences designed to advance your AI knowledge
-            </p>
+    <PageWrapper>
+      <ScrollButtons />
+      <div className="min-h-screen bg-background" style={{ backgroundColor: 'hsl(215, 80%, 9%)' }}>
+        {/* Header */}
+        <div className="gradient-hero py-16">
+          <div className="container mx-auto px-4">
+            <ParallaxHero>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
+                  <div className="text-center">
+                    <div className="mb-10">
+                      <div className="inline-flex items-center gap-4 px-6 py-3 rounded-2xl glass-card animate-glow-pulse">
+                        <Users className="w-5 h-5 text-cyan" />
+                        <span className="text-cyan/80 text-sm font-medium tracking-wider uppercase">
+                          our events  
+                        </span>
+                      </div>
+                    </div>
+
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
+                      <span className="text-gradient letter-spacing-animate inline-block">
+                        Events
+                      </span>
+                    </h1>
+
+                    <p className="text-lg sm:text-xl md:text-2xl text-cyan/70 font-light tracking-widest uppercase max-w-3xl mx-auto">
+                      Discover What’s Happening in ACM SIGAI
+                    </p>
+
+                    <div className="flex items-center justify-center gap-4 mt-16">
+                      <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan/50 to-transparent" />
+                      <div className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
+                      <div className="w-32 h-px bg-gradient-to-r from-transparent via-cyan to-transparent" />
+                      <div
+                        className="w-2 h-2 rounded-full bg-cyan animate-pulse"
+                        style={{ animationDelay: "0.5s" }}
+                      />
+                      <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan/50 to-transparent" />
+                    </div>
+                  </div>
+                </div>
+              </ParallaxHero>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 py-8">
+          {/* Tabs */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+            <div className="flex space-x-1 glass-card rounded-lg p-1">
+              <button
+                onClick={() => setActiveTab('upcoming')}
+                className={`px-6 py-2 rounded-md font-medium transition-colors ${
+                  activeTab === 'upcoming' 
+                    ? 'bg-accent text-accent-foreground shadow-sm' 
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Upcoming Events
+              </button>
+              <button
+                onClick={() => setActiveTab('past')}
+                className={`px-6 py-2 rounded-md font-medium transition-colors ${
+                  activeTab === 'past' 
+                    ? 'bg-accent text-accent-foreground shadow-sm' 
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Past Events
+              </button>
+            </div>
+          </div>
+
+          {/* Events Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activeTab === 'upcoming' ? (
+              upcomingEvents.length > 0 ? (
+                upcomingEvents.map(event => (
+                  <EventCard key={event.id} event={event} />
+                ))
+              ) : (
+                <div className="col-span-full text-center py-16">
+                  <div className="glass-card rounded-xl p-8 max-w-md mx-auto">
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CalendarIcon className="w-8 h-8 text-accent" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      No Upcoming Events
+                    </h3>
+                    <p className="text-muted-foreground">
+                      No upcoming events scheduled at the moment. Check back soon for new announcements!
+                    </p>
+                  </div>
+                </div>
+              )
+            ) : (
+              pastEvents.length > 0 ? (
+                pastEvents.map(event => (
+                  <EventCard key={event.id} event={event} />
+                ))
+              ) : (
+                <div className="col-span-full text-center py-16">
+                  <div className="glass-card rounded-xl p-8 max-w-md mx-auto">
+                    <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CalendarIcon className="w-8 h-8 text-accent" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      No Past Events
+                    </h3>
+                    <p className="text-muted-foreground">
+                      No completed events to display.
+                    </p>
+                  </div>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
-        {/* Tabs */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-          <div className="flex space-x-1 glass-card rounded-lg p-1">
-            <button
-              onClick={() => setActiveTab('upcoming')}
-              className={`px-6 py-2 rounded-md font-medium transition-colors ${
-                activeTab === 'upcoming' 
-                  ? 'bg-accent text-accent-foreground shadow-sm' 
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Upcoming Events
-            </button>
-            <button
-              onClick={() => setActiveTab('past')}
-              className={`px-6 py-2 rounded-md font-medium transition-colors ${
-                activeTab === 'past' 
-                  ? 'bg-accent text-accent-foreground shadow-sm' 
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Past Events
-            </button>
-          </div>
-        </div>
-
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeTab === 'upcoming' ? (
-            upcomingEvents.length > 0 ? (
-              upcomingEvents.map(event => (
-                <EventCard key={event.id} event={event} />
-              ))
-            ) : (
-              <div className="col-span-full text-center py-16">
-                <div className="glass-card rounded-xl p-8 max-w-md mx-auto">
-                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CalendarIcon className="w-8 h-8 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    No Upcoming Events
-                  </h3>
-                  <p className="text-muted-foreground">
-                    No upcoming events scheduled at the moment. Check back soon for new announcements!
-                  </p>
-                </div>
-              </div>
-            )
-          ) : (
-            pastEvents.length > 0 ? (
-              pastEvents.map(event => (
-                <EventCard key={event.id} event={event} />
-              ))
-            ) : (
-              <div className="col-span-full text-center py-16">
-                <div className="glass-card rounded-xl p-8 max-w-md mx-auto">
-                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CalendarIcon className="w-8 h-8 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    No Past Events
-                  </h3>
-                  <p className="text-muted-foreground">
-                    No completed events to display.
-                  </p>
-                </div>
-              </div>
-            )
-          )}
-        </div>
-      </div>
-    </div>
+    </PageWrapper>
   );
 };
 

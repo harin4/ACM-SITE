@@ -134,15 +134,7 @@ const Team = () => {
       linkedin: "priyadharshini2",
       bio: "Empowering women in engineering and technology at ACM SIGAI",
     },
-    {
-      id: 14,
-      name: "Lakshitha",
-      role: "core",
-      position: "Women in Engineering Lead",
-      image: null, // Placeholder image - will use fallback
-      linkedin: null,
-      bio: "Supporting women in engineering initiatives at ACM SIGAI",
-    },
+    
   ];
 
   const filteredMembers =
@@ -161,8 +153,6 @@ const Team = () => {
   return (
     <PageWrapper>
       <ScrollButtons />
-
-      {/* HERO SECTION */}
       <ParallaxHero>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-40">
           <div className="text-center">
@@ -352,10 +342,10 @@ const Team = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {[
-              { value: "14", label: "Total Members" },
+              { value: "120", label: "Total Members" },
               { value: "5", label: "Faculty" },
               { value: "3", label: "Office Bearers" },
-              { value: "6", label: "Core Team" },
+              { value: "8", label: "Core Team" },
             ].map((stat) => (
               <div
                 key={stat.label}

@@ -73,7 +73,7 @@ return (
         </div>
 
         {/* Social Icons */}
-        <div className="flex items-center justify-center gap-4 mb-8">
+        <div className="flex items-center justify-center gap-4 mb-8 ">
           {socialLinks.map((item) => {
             const Icon = item.icon;
             return (
@@ -83,7 +83,7 @@ return (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-5 h-5 text-muted-foreground hover:text-cyan transition-colors" />
               </a>
             );
           })}

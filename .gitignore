@@ -15,10 +15,12 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.ideagit log --oneline --decorate --graph -5
+
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+node_modules

@@ -223,10 +223,10 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {[
-              { value: "500+", label: "Members" },
-              { value: "50+", label: "Events" },
-              { value: "20+", label: "Projects" },
-              { value: "10+", label: "Research Papers" },
+              { value: "120+", label: "Members" },
+              { value: "62+", label: "Events" },
+              { value: "8+", label: "Projects" },
+              { value: "12+", label: "Research Papers" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -258,11 +258,6 @@ const Home = () => {
             Join ACM SIGAI SRMIST and be part of a community that's pushing the boundaries of artificial intelligence.
           </p>
 
-          <div className="flex items-center justify-center gap-8 flex-wrap">
-            <PlaceholderLogo name="SRMIST" size="lg" />
-            <PlaceholderLogo name="ACM" size="lg" />
-            <PlaceholderLogo name="SIGAI" size="lg" />
-          </div>
         </div>
       </section>
     </PageWrapper>
